@@ -21,8 +21,15 @@ public class PlayerMovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerAnum();
-        MovePlayer();
+        if (!animator.GetBool("isDie"))
+        {
+            PlayerAnum();
+            MovePlayer();
+        }
+        else
+        {
+            animator.Play("Idle");
+        }
     }
     private void MovePlayer()
     {
@@ -41,20 +48,20 @@ public class PlayerMovementController : MonoBehaviour
         }
         vector.Normalize();//向量的归一化，保证每个方向的移动速度一致。}
         if (!animator.GetBool("isDie")) {
-            rb2d.position += vector * MoveSpeed * Time.deltaTime;
+            rb2d.position += vector * MoveSpeed * Time.deltaTime* player.offset.speedoffset;
         }
         //transform.position += new Vector3(vector.x, vector.y, 0.0f) * MoveSpeed * Time.deltaTime;
     }
  
     private void PlayerAnum()
     {
-        if (Mathf.Approximately(vector.x,0.0f) && Mathf.Approximately(vector.y, 0.0f))
+        if (Mathf.Approximately(vector.x, 0.0f) && Mathf.Approximately(vector.y, 0.0f))
         {
             animator.SetBool("isWalking", false);
         }
-        else {
+        else
+        {
             animator.SetBool("isWalking", true);
         }
-      
     }
 }

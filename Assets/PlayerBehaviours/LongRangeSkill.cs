@@ -10,6 +10,7 @@ public class LongRangeSkill : MonoBehaviour
     private Rigidbody2D rb2d;
     private Vector3 vector;
     private Player player;
+    private Skill_Data skill;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +23,9 @@ public class LongRangeSkill : MonoBehaviour
         else
         {
             rb2d.velocity = -(transform.right * AttackSpeed);
+            transform.localScale = new Vector3(-2.485487f, 1.811549f, 1);
         }
-
+        skill = player.CurrentSkill;
         vector = transform.position;
     }
 
@@ -40,8 +42,14 @@ public class LongRangeSkill : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Monster monster = collision.gameObject.GetComponent<Monster>();
-            collision.GetComponent<Monster>().CharacterDamage(player.damage);
+            if (skill.DamageTime != 0)
+            {
+                collision.GetComponent<Enemy>().CharacterDamage(skill.Damage, skill.DamageTime);
+            }
+            else {
+                collision.GetComponent<Enemy>().CharacterDamage(skill.DamageTime,0);
+            }
+
             Destroy(gameObject);
         }
     }

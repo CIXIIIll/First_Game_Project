@@ -1,43 +1,27 @@
-﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using UnityEngine;
 
-namespace Assets.Scripts.PlayerBehaviours
+public class Element : MonoBehaviour
 {
-    internal class Element
+    public int elementType;
+    // Start is called before the first frame update
+    void Start()
     {
-        public int Earth { get; set; }
-        public int Air { get; set; }
-        public int Fire { get; set; }
-        public int Water { get; set; }
+        
+    }
 
-        public Element()
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Earth = 0;
-            Air = 0;
-            Fire = 0;
-            Water = 0;
-        }
-        public int FindHighestEle()
-        {
-            if(Earth>Air&& Earth> Fire&& Earth> Water)
-            {
-                return 1;
-            }
-            else if(Air> Earth &&Air> Fire&&Air > Water)
-            {
-                return 2;
-            }
-            else if (Fire > Earth && Fire > Air && Fire > Water)
-            {
-                return 3;
-            }
-            else
-            {
-                return 4;
-            }
+            collision.gameObject.GetComponent<Player>().ReceiveElement(elementType);
+            Destroy(gameObject);
         }
     }
 }

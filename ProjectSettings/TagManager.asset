@@ -8,6 +8,7 @@ TagManager:
   - Weapon
   - Item
   - PlayerAttack
+  - Element
   layers:
   - Default
   - TransparentFX

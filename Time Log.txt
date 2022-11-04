@@ -1,4 +1,0 @@
-
-2022/9/2 1hour finding Unity Tutorial and find possible 2D Asset
-9/4	4 hour watching Tutorial and creating a basic map and player.
-9/5 	1 hour create attack Animation

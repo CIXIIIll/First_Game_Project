@@ -16,5 +16,6 @@ MonoBehaviour:
   CloseWeapon: 1
   Damage: 100
   CD: 15
-  Weapon_prefab: {fileID: 5855782691315158757, guid: 752e1e75d03683846a1eb6dc796f9fac, type: 3}
+  MPcost: 90
+  Skill_prefab: {fileID: 0}
   DamageTime: 0

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkillType: Water
   CloseWeapon: 1
-  Damage: 20
+  Damage: 5
   CD: 10
-  Weapon_prefab: {fileID: 0}
-  DamageTime: 10
+  MPcost: 0
+  Skill_prefab: {fileID: 0}
+  DamageTime: 15

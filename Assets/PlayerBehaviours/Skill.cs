@@ -55,8 +55,7 @@ public class Skill : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Monster monster = collision.gameObject.GetComponent<Monster>();
-            collision.GetComponent<Monster>().CharacterDamage(player.damage);
+            collision.GetComponent<Enemy>().CharacterDamage(player.GetDeamge(),0); 
         }
     }
     IEnumerator DisAbleAttackBox()

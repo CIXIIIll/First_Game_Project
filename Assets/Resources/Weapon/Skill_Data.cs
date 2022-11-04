@@ -9,6 +9,7 @@ public class Skill_Data : ScriptableObject
     public bool CloseWeapon;
     public float Damage;
     public float CD;
-    public GameObject Weapon_prefab;
+    public float MPcost;
+    public GameObject Skill_prefab;
     public float DamageTime;
 }
