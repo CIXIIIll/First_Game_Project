@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b235aba3840e506429165c2d83271566, type: 3}
-  m_Name: EarthLong
+  m_Name: EarthClose
   m_EditorClassIdentifier: 
   SkillType: Earth
-  CloseWeapon: 0
-  Damage: 100
-  CD: 15
+  CloseWeapon: 1
+  Damage: 50
+  CD: 0
   MPcost: 0
-  Skill_prefab: {fileID: 3480358690389824897, guid: 1e9d84d0bbb52d44abbfdc64a53d69c5, type: 3}
+  Skill_prefab: {fileID: 7095288559804817789, guid: b2d5947ec070eb2448e670af51b9203d, type: 3}
   DamageTime: 0
