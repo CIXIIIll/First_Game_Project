@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8958648699022432006}
   - component: {fileID: 8958648699022432005}
   - component: {fileID: 8958648699022432000}
+  - component: {fileID: 2788495961213685982}
   m_Layer: 0
   m_Name: charged1
   m_TagString: PlayerAttack
@@ -27,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8958648699022432027}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.38947642, y: -1.3782604, z: 8.164344}
   m_LocalScale: {x: 2.4854867, y: 1.811549, z: 1}
   m_ConstrainProportionsScale: 0
@@ -146,5 +147,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7eb083224f4e76489173dbb76cadd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackSpeed: 10
+  FlightSpeed: 10
   DestoryDistance: 70
+--- !u!95 &2788495961213685982
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8958648699022432027}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bfa1f197800da41f29dee560ee391cae, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

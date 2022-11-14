@@ -36,26 +36,36 @@ public class Character : MonoBehaviour
     }
     public void CharacterDamage(float damage, float duration) 
     {
-        if (duration != 0)
+        if (gameObject != null && player != null)
         {
-            StartCoroutine(DamageOverTime(damage, duration));
-        }
-        else
-        {
-            HP -= damage/offset.defensiveoffset;
-            if (HP <= float.Epsilon)
+            if (!player.CannotDamage)
             {
-                CharacterDie();
+                if (duration != 0)
+                {
+                    StartCoroutine(DamageOverTime(damage, duration));
+                }
+                else
+                {
+                    HP -= damage / offset.defensiveoffset;
+                    if (HP <= float.Epsilon)
+                    {
+                        CharacterDie();
+                    }
+                }
             }
         }
     }
     private IEnumerator DamageOverTime(float damage, float duration) {
-        for (int i = 0; i < duration; i++) {
-            yield return new WaitForSeconds(1);
-            HP -= damage;
-            if (HP <= float.Epsilon)
+        if (!player.CannotDamage)
+        {
+            for (int i = 0; i < duration; i++)
             {
-                CharacterDie();
+                yield return new WaitForSeconds(1);
+                HP -= damage;
+                if (HP <= float.Epsilon)
+                {
+                    CharacterDie();
+                }
             }
         }
     }

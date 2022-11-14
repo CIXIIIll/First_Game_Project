@@ -35,20 +35,38 @@ public class PlayerMovementController : MonoBehaviour
     {
         vector.x = Input.GetAxisRaw("Horizontal");
         vector.y = Input.GetAxisRaw("Vertical");
+        if (!animator.GetBool("isDie"))
+        {
+            if ((vector.x != 0 || vector.y != 0))
+            {
+                if (player.Frozen)
+                {
+                    if (vector.x < 0 && player.faceright)
+                    {
+                        vector.x *= 0.5f;
+                    }
+                    else if (vector.x > 0 && !player.faceright)
+                    {
+                        vector.x *= 0.5f;
+                    }
+                }
+                else
+                {
+                    if (vector.x > 0 && !player.faceright)
+                    {
+                        transform.localScale = new Vector3(-1, 1, 1);
+                        player.faceright = true;
+                    }
+                    else if (vector.x < 0 && player.faceright)
+                    {
+                        transform.localScale = new Vector3(1, 1, 1);
+                        player.faceright = false;
+                    }
+                    vector.Normalize();
+                }
 
-        if (vector.x > 0 && !player.faceright)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-            player.faceright = true;
-        }
-        else if (vector.x < 0 && player.faceright)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-            player.faceright = false;
-        }
-        vector.Normalize();//向量的归一化，保证每个方向的移动速度一致。}
-        if (!animator.GetBool("isDie")) {
-            rb2d.position += vector * MoveSpeed * Time.deltaTime* player.offset.speedoffset;
+                rb2d.position += vector * MoveSpeed * Time.deltaTime;
+            }
         }
         //transform.position += new Vector3(vector.x, vector.y, 0.0f) * MoveSpeed * Time.deltaTime;
     }

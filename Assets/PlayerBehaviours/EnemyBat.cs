@@ -5,13 +5,15 @@ using UnityEngine;
 public class EnemyBat : Enemy
 {
     // Start is called before the first frame update
-    void Start()
+    private new void Start()
     {
+        base.HP = 100.0f;
+        base.Deamge = 10.0f;
         base.Start();
     }
 
     // Update is called once per frame
-    void Update()
+    private new void Update()
     {
         base.Update();
     }

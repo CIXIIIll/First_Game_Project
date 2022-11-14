@@ -17,15 +17,23 @@ public class ElementController : MonoBehaviour
         
     }
     public void ElementGenerate(Transform Tragettransform,int ElementID) {
-        switch (ElementID) {
-            case 1:
+        Vector3 x = Tragettransform.transform.position;
+        x.z = -0.5f;
+        Tragettransform.transform.position = x;
+        switch (ElementID) { 
+            case 0:
                 GameObject temp = elementList.List[0].Prefab;
                 Instantiate(temp, Tragettransform.position, Tragettransform.rotation);
                 break;
-            case 2:
+            case 1:
                 Instantiate(elementList.List[1].Prefab, Tragettransform.position, Tragettransform.rotation);
-
                 break ;
+            case 2:
+                Instantiate(elementList.List[2].Prefab, Tragettransform.position, Tragettransform.rotation);
+                break;
+            case 3:
+                Instantiate(elementList.List[3].Prefab, Tragettransform.position, Tragettransform.rotation);
+                break;
             default:
                 break;
         }

@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void FlashColor(float time)
+    private void FlashColor(float time)
     {
         sr.color = Color.red;
         Invoke("ResetColor", time);
@@ -65,10 +65,14 @@ public class Enemy : MonoBehaviour
     }
     public void ElementGenerate()
     {
-        int i = Random.Range(1, 5);
+        int i = Random.Range(1,8);
         for (int j = 0; j < i; j++)
         {
-            GameObject.FindGameObjectWithTag("Element").GetComponent<ElementController>().ElementGenerate(transform, 1);
+            int x = Random.Range(0, 4);
+            if (x == 4) {
+                x = 3;
+            }
+            GameObject.FindGameObjectWithTag("Element").GetComponent<ElementController>().ElementGenerate(transform, x);
         }
     }
 }

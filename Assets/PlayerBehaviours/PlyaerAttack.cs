@@ -10,8 +10,9 @@ public class PlyaerAttack : MonoBehaviour
     public float Starttime;
     public float time;
     public GameObject hit;
-    public GameObject charged1;
+    public GameObject FireCP;
     private float invokeTime;
+    AnimatorStateInfo animatorInfo;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class PlyaerAttack : MonoBehaviour
         invokeTime = player.AttackSpeed;
         animator = GameObject.FindWithTag("Player").GetComponent<Animator>();
         polygon = GetComponent<PolygonCollider2D>();
+        animatorInfo = animator.GetCurrentAnimatorStateInfo(0);
     }
 
     // Update is called once per frame
@@ -43,11 +45,54 @@ public class PlyaerAttack : MonoBehaviour
         invokeTime += Time.deltaTime;
         if (Input.GetButtonDown("Skill"))
         {
+            Skill_Data CurrentSkill = player.CurrentSkill;
             if (player.MP >= player.CurrentSkill.MPcost)
             {
-                animator.SetTrigger("isAttack");
-                player.ReduceMP(player.CurrentSkill.MPcost);
-                Instantiate(charged1, transform.position, transform.rotation);
+                if (player.CurrentSkill.CloseWeapon == true)
+                {
+                    if (true)
+                    {
+                        // Fire C
+                        player.Frozen = true;
+                        if (player.faceright)
+                        {
+                            Vector3 vector = player.transform.position;
+                            vector.x += 1.5f;
+                            FireCP = Instantiate<GameObject>(CurrentSkill.Skill_prefab, vector, player.transform.rotation, player.transform);
+                        }
+                        else
+                        {
+                            Vector3 vector = player.transform.position;
+                            vector.x -= 1.5f;
+                            FireCP = Instantiate<GameObject>(CurrentSkill.Skill_prefab, vector, player.transform.rotation, player.transform);
+                        }
+
+                    }
+                }
+                // Long range
+                else {
+                    if (true)
+                    {
+                        //animator.Play("CloseEarth");
+                        player.ReduceMP(player.CurrentSkill.MPcost);
+                        Vector3 vec = transform.position;
+                        if (player.faceright)
+                        {
+                            vec.x += 3;
+                        }
+                        else
+                        {
+                            vec.x -= 3;
+                        }
+                        Instantiate(CurrentSkill.Skill_prefab, vec, transform.rotation);
+                        StartCoroutine(Invincibilityframe());
+                    }
+                    else {
+                        animator.SetTrigger("isAttack");
+                        player.ReduceMP(player.CurrentSkill.MPcost);
+                        Instantiate(CurrentSkill.Skill_prefab, transform.position, transform.rotation);
+                    }
+                }
             }
             else {
                 return;
@@ -55,6 +100,12 @@ public class PlyaerAttack : MonoBehaviour
         }
     }
 
+    IEnumerator Invincibilityframe()
+    {
+        player.CannotDamage = true;
+        yield return new WaitForSeconds(0.5f);
+        player.CannotDamage = false;
+    }
     IEnumerator stratAttack() { 
         if (player.CloseRange) {
             yield return new WaitForSeconds(Starttime);

@@ -1,0 +1,12 @@
+* mean to not sure, I forgot to count the time for work
+2022/9/2 1 hour finding Unity Tutorial and finding possible 2D Asset
+9/4	4 hour watching Tutorial and creating a basic map and player.
+9/4	4 hour watching Tutorial and creating a basic map and player.
+9/5 	1 hour create attack Animation
+10/16  Finish MVP
+10/29 5 hours* Create First Skill and skill system 1/8
+10/30 8 hours* Create 3 elements, element system, offset system, find Asset for other skill
+11/3 5 hours* Create enemy hit effect, adding
+11/4 Part I Add Enemy Giant 
+11/12 5 hours Create 3 Skills (EarthC, FrieC, FireL) C for Close Range L for Long Range 4/8
+11/13 2 hours Changed EarthC to EarthL, Make Plan for Air Skill 4/8

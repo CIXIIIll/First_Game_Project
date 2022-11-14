@@ -42,4 +42,15 @@ public class CurrentWeapon : MonoBehaviour
             collision.GetComponent<Weapon_System>().DesotryWeapon();
         }
     }
+    public void DisableWeapon() {
+        Vector3 vector = weaponTrans.transform.position;
+        vector.z = -50;
+        weaponTrans.transform.position = vector;
+    }
+    public void EnableWeapon()
+    {
+        Vector3 vector = weaponTrans.transform.position;
+        vector.z = -1;
+        weaponTrans.transform.position = vector;
+    }
 }

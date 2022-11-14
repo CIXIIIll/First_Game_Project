@@ -2,58 +2,93 @@ using Assets.PlayerBehaviours;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 
 public class Player : Character
 {
-    private int Earth = 0;
-    private int Fire = 0;
+    private int Earth;
+    private int Fire;
+    private int Air;
+    private int Water;
     public  float MaxHP = 100.0f;
-    public  float PlayerHP = 100.0f;
     public  float MaxMP = 100.0f;
-    public  float PlayerMP = 100.0f;
     public bool CloseRange = false;
     public float AttackSpeed = 1.0f;
     public bool faceright;
-    public Weapon_Data CurrentWeapon;
+    public bool Frozen;
+    public int currentLevel;
+    public int NextExp;
+    public int CurrEXP;
+    public bool CannotDamage;
+    private Weapon_Data CurrentWeapon;
     private float damage = 50.0f;
     private Skill_List skills;
     public Skill_Data CurrentSkill;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         offset = new PlayerOffset();
         skills = Resources.Load<Skill_List>("Weapon/SkillData/Skill_List");
-        CurrentSkill = GetSkill();
+        CloseRange = true;
+        UpdateSkill();
+        Earth = 0;
+        Fire = 0;
+        Air = 0;
+        Water = 0;
+        currentLevel = 1;
+        CurrEXP = 0;
+        NextExp = GetnextLevel(currentLevel);
         offset.speedoffset = 1.0f;
         offset.LifeSteal = 0f;
         offset.defensiveoffset = 1.0f;
         offset.deamgeoffset = 1.0f;
+        CannotDamage = false;
+        Frozen = false;
     }
-
+    private int GetnextLevel(int current) {
+        int next = (int)Math.Pow(current - 1, 3);
+        next += 5;
+        next /= 5;
+        next *= 20;
+        return next;
+    }
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void SetWeapon(Weapon_Data weapon) { 
         CurrentWeapon = weapon;
         CloseRange = weapon.CloseWeapon;
-        AttackSpeed = weapon.AttackSpeed; 
+        AttackSpeed = weapon.AttackSpeed;
+        UpdateSkill();
     }
-    public Skill_Data GetSkill() {
+    public void UpdateSkill() {
         if (CloseRange)
         {
-            return skills.List[1];
+            CurrentSkill = skills.List[3];
         }
         else {
-            return skills.List[1];
+            CurrentSkill = skills.List[0];
         }
     }
     public float GetDeamge() {
-        return ((damage+Fire) * CurrentWeapon.Damage)* offset.deamgeoffset;
+        return ((damage+Earth) * CurrentWeapon.Damage)* offset.deamgeoffset;
+    }
+    public float GetDeamgeSkill(float Skilldamage)
+    {
+        return ((Skilldamage + (Water*0.3f)+(Fire*0.5f)) * CurrentWeapon.Damage) * offset.deamgeoffset;
     }
     public void ReceiveElement(int type) {
+        UpdateSkill();
+        CurrEXP += 5;
+        if (CurrEXP >= NextExp) {
+            currentLevel += 1;
+            NextExp = GetnextLevel(currentLevel);
+            MaxHP += 25;
+            CurrEXP = 0;
+        }
         switch (type) {
             case 0:
                 Fire += 5;
@@ -61,6 +96,13 @@ public class Player : Character
 
             case 1:
                 Earth += 5;
+                break;
+            case 2:
+                Air += 5;
+                break;
+            case 3:
+                Water += 5;
+                MaxMP += 5;
                 break;
 
             default:
