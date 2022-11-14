@@ -11,6 +11,7 @@ public class EarthC : MonoBehaviour
     private Player player;
     public int currentTimes;
     public int totalTimes;
+    public float Extra;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +50,7 @@ public class EarthC : MonoBehaviour
         {
             if (currentTimes <= totalTimes)
             {
-                collision.GetComponent<Enemy>().CharacterDamage(player.GetDeamge()*2, 0);
+                collision.GetComponent<Enemy>().CharacterDamage(player.GetDeamge()* player.Extra, 0);
                 currentTimes++;
             }
             else {

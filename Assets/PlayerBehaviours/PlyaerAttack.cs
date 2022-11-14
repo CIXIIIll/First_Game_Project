@@ -10,12 +10,15 @@ public class PlyaerAttack : MonoBehaviour
     public float Starttime;
     public float time;
     public GameObject hit;
-    public GameObject FireCP;
+    public GameObject SkillCP;
     private float invokeTime;
+    private float holdTime;
+    bool isDown;
     AnimatorStateInfo animatorInfo;
     // Start is called before the first frame update
     void Start()
     {
+        isDown = false;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         invokeTime = player.AttackSpeed;
         animator = GameObject.FindWithTag("Player").GetComponent<Animator>();
@@ -28,6 +31,22 @@ public class PlyaerAttack : MonoBehaviour
     {
         Attack();
         Skill();
+        Timer();
+    }
+    void Timer() {
+        if (isDown)
+        {
+            holdTime += Time.deltaTime;
+        }
+        else if (!isDown && holdTime > 0.5f) {
+            holdTime = holdTime > 3f ? holdTime = 3 : holdTime;
+            float percentum = (holdTime - 0.5f) / (3f - 0.5f) * 1f;
+            float damage = (2.5f - 1f) * percentum + 1f;
+            player.ReduceMP(player.CurrentSkill.MPcost);
+            player.Extra = damage;
+            SkillCP = Instantiate(player.CurrentSkill.Skill_prefab, transform.position, transform.rotation);
+            holdTime = 0;
+        }
     }
     void Attack()
     {
@@ -52,25 +71,30 @@ public class PlyaerAttack : MonoBehaviour
                 {
                     if (true)
                     {
+                        isDown = true;
+                    }
+                    else
+                    {
                         // Fire C
                         player.Frozen = true;
                         if (player.faceright)
                         {
                             Vector3 vector = player.transform.position;
                             vector.x += 1.5f;
-                            FireCP = Instantiate<GameObject>(CurrentSkill.Skill_prefab, vector, player.transform.rotation, player.transform);
+                            SkillCP = Instantiate<GameObject>(CurrentSkill.Skill_prefab, vector, player.transform.rotation, player.transform);
                         }
                         else
                         {
                             Vector3 vector = player.transform.position;
                             vector.x -= 1.5f;
-                            FireCP = Instantiate<GameObject>(CurrentSkill.Skill_prefab, vector, player.transform.rotation, player.transform);
+                            SkillCP = Instantiate<GameObject>(CurrentSkill.Skill_prefab, vector, player.transform.rotation, player.transform);
                         }
 
                     }
                 }
                 // Long range
-                else {
+                else
+                {
                     if (true)
                     {
                         //animator.Play("CloseEarth");
@@ -87,16 +111,21 @@ public class PlyaerAttack : MonoBehaviour
                         Instantiate(CurrentSkill.Skill_prefab, vec, transform.rotation);
                         StartCoroutine(Invincibilityframe());
                     }
-                    else {
+                    else
+                    {
                         animator.SetTrigger("isAttack");
                         player.ReduceMP(player.CurrentSkill.MPcost);
                         Instantiate(CurrentSkill.Skill_prefab, transform.position, transform.rotation);
                     }
                 }
             }
-            else {
+            else
+            {
                 return;
             }
+        }
+        else if (Input.GetButtonUp("Skill")) {
+            isDown = false;
         }
     }
 

@@ -25,6 +25,7 @@ public class Player : Character
     private float damage = 50.0f;
     private Skill_List skills;
     public Skill_Data CurrentSkill;
+    public float Extra;
     // Start is called before the first frame update
     void Awake()
     {
@@ -67,7 +68,7 @@ public class Player : Character
     public void UpdateSkill() {
         if (CloseRange)
         {
-            CurrentSkill = skills.List[3];
+            CurrentSkill = skills.List[4];
         }
         else {
             CurrentSkill = skills.List[0];

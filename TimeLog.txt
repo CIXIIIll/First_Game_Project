@@ -11,3 +11,4 @@
 11/12 5 hours Create 3 Skills (EarthC, FrieC, FireL) C for Close Range L for Long Range 4/8
 11/13 2 hours Changed EarthC to EarthL, Make Plan for Air Skill 4/8
 11/13 3 hours Create EarthC (not finished need "hold on" system)4.5/8
+11/14 1.5 hours finished hold system. 
