@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyGiant : Enemy
+public class EnemyBat : Enemy
 {
     // Start is called before the first frame update
     private new void Start()
     {
-        base.HP = 500.0f;
-        base.Deamge = 30.0f;
+        base.HP = 100.0f;
+        base.MAXHP = 100f;
+        base.Deamge = 10.0f;
         base.Start();
     }
 

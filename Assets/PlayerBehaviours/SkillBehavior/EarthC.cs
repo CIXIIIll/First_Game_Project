@@ -27,7 +27,7 @@ public class EarthC : MonoBehaviour
         else
         {
             rb2d.velocity = -(transform.right * FlightSpeed);
-            transform.localScale = new Vector3(-2.485487f, 1.811549f, 1);
+            transform.localScale = new Vector3(-1, 1, 1);
         }
         vector = transform.position;
     }

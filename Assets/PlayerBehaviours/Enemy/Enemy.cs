@@ -7,9 +7,9 @@ public class Enemy : MonoBehaviour
     private SpriteRenderer sr;
     private Color original;
     public float HP;
+    public float MAXHP;
     public float Deamge;
     public float flashTime;
-
     // Start is called before the first frame update
     public void Start()
     {
@@ -42,6 +42,18 @@ public class Enemy : MonoBehaviour
     {
         sr.color = original;
     }
+    private void setHealthBar() {
+        float per = HP / MAXHP;
+        per = 0.5f * per;
+        Transform [] health  = GetComponentsInChildren<Transform>();
+        foreach (var child in health) {
+            if (child.name == "EnemyHealth") {
+                Vector3 x = child.gameObject.transform.localScale;
+                x.x = per;
+                child.gameObject.transform.localScale = x;
+            }
+        }
+    }
     public void CharacterDamage(float damage, float duration)
     {
         if (duration != 0)
@@ -53,6 +65,7 @@ public class Enemy : MonoBehaviour
             HP -= damage;
         }
         FlashColor(flashTime);
+        setHealthBar();
     }
     private IEnumerator DamageOverTime(float damage, float duration)
     {
@@ -60,6 +73,7 @@ public class Enemy : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             FlashColor(flashTime);
+            setHealthBar();
             HP -= damage;
         }
     }
