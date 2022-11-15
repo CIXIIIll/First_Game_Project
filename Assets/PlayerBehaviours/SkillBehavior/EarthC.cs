@@ -15,8 +15,10 @@ public class EarthC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         currentTimes = 0;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+
         rb2d = GetComponent<Rigidbody2D>();
         if (player.faceright)
         {

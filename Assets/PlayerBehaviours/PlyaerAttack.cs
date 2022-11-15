@@ -37,6 +37,11 @@ public class PlyaerAttack : MonoBehaviour
         if (isDown)
         {
             holdTime += Time.deltaTime;
+            float test = holdTime > 3f ? holdTime = 3 : holdTime;
+            float hold = test / 3f;
+            LongPress x = GameObject.FindGameObjectWithTag("EditorOnly").GetComponent<LongPress>();
+            x.UpdateBar(hold);
+
         }
         else if (!isDown && holdTime > 0.5f) {
             holdTime = holdTime > 3f ? holdTime = 3 : holdTime;
@@ -125,6 +130,8 @@ public class PlyaerAttack : MonoBehaviour
             }
         }
         else if (Input.GetButtonUp("Skill")) {
+            LongPress x = GameObject.FindGameObjectWithTag("EditorOnly").GetComponent<LongPress>();
+            x.ResetBar();
             isDown = false;
         }
     }
