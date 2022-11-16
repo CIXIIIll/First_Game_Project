@@ -71,7 +71,7 @@ public class Player : Character
             CurrentSkill = skills.List[4];
         }
         else {
-            CurrentSkill = skills.List[0];
+            CurrentSkill = skills.List[5];
         }
     }
     public float GetDeamge() {
@@ -80,6 +80,14 @@ public class Player : Character
     public float GetDeamgeSkill(float Skilldamage)
     {
         return ((Skilldamage + (Water*0.3f)+(Fire*0.5f)) * CurrentWeapon.Damage) * offset.deamgeoffset;
+    }
+    public void SetExtra(float value) {
+        Extra += value;
+        StartCoroutine(ResetExtra(value));
+    }
+    IEnumerator ResetExtra(float value) {
+        yield return new WaitForSeconds(3);
+        Extra -= value;
     }
     public void ReceiveElement(int type) {
         UpdateSkill();

@@ -48,7 +48,7 @@ public class PlyaerAttack : MonoBehaviour
             float percentum = (holdTime - 0.5f) / (3f - 0.5f) * 1f;
             float damage = (2.5f - 1f) * percentum + 1f;
             player.ReduceMP(player.CurrentSkill.MPcost);
-            player.Extra = damage;
+            player.SetExtra(damage);
             SkillCP = Instantiate(player.CurrentSkill.Skill_prefab, transform.position, transform.rotation);
             holdTime = 0;
         }
@@ -102,6 +102,14 @@ public class PlyaerAttack : MonoBehaviour
                 {
                     if (true)
                     {
+                        StartCoroutine(GenAirL(CurrentSkill,0));
+                    }
+                    else
+                    {
+                        animator.SetTrigger("isAttack");
+                        player.ReduceMP(player.CurrentSkill.MPcost);
+                        Instantiate(CurrentSkill.Skill_prefab, transform.position, transform.rotation);
+
                         //animator.Play("CloseEarth");
                         player.ReduceMP(player.CurrentSkill.MPcost);
                         Vector3 vec = transform.position;
@@ -115,12 +123,6 @@ public class PlyaerAttack : MonoBehaviour
                         }
                         Instantiate(CurrentSkill.Skill_prefab, vec, transform.rotation);
                         StartCoroutine(Invincibilityframe());
-                    }
-                    else
-                    {
-                        animator.SetTrigger("isAttack");
-                        player.ReduceMP(player.CurrentSkill.MPcost);
-                        Instantiate(CurrentSkill.Skill_prefab, transform.position, transform.rotation);
                     }
                 }
             }
@@ -136,6 +138,15 @@ public class PlyaerAttack : MonoBehaviour
         }
     }
 
+    IEnumerator GenAirL(Skill_Data CurrentS, int Repect)
+    {
+        if (Repect < 5) {
+            Repect++;
+            Instantiate(CurrentS.Skill_prefab, transform.position, transform.rotation);
+            yield return new WaitForSeconds(1f);
+            StartCoroutine(GenAirL(CurrentS, Repect));
+        }
+    }
     IEnumerator Invincibilityframe()
     {
         player.CannotDamage = true;
