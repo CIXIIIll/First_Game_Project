@@ -13,3 +13,6 @@
 11/13 3 hours Create EarthC (not finished need "hold on" system)4.5/8
 11/14 3 hours finished hold system, UI, Enemy UI
 11/15 2 hours finished AirL 6/8, and Extra damage system 6/8
+11/25 4 hours finished basic Enemy AI and add more things for Enemy battle system
+11/26 3 hours finished bat Skill
+11/17 2 hours finish giant Skill

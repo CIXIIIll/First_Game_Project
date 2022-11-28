@@ -143,7 +143,7 @@ public class PlyaerAttack : MonoBehaviour
         if (Repect < 5) {
             Repect++;
             Instantiate(CurrentS.Skill_prefab, transform.position, transform.rotation);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             StartCoroutine(GenAirL(CurrentS, Repect));
         }
     }
@@ -166,6 +166,10 @@ public class PlyaerAttack : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy")) {
+            collision.GetComponent<Enemy>().CharacterDamage(player.GetDeamge(), 0);
+            Vector3 dis = collision.transform.position - transform.position;
+            collision.transform.position = new Vector3(collision.transform.position.x + dis.x*0.5f,
+                                             collision.transform.position.y + dis.y*0.5f, -1);
             collision.GetComponent<Enemy>().CharacterDamage(player.GetDeamge(),0);
         }
     }

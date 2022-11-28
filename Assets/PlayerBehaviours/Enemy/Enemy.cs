@@ -9,12 +9,17 @@ public class Enemy : MonoBehaviour
     public float HP;
     public float MAXHP;
     public float Deamge;
+    public Transform playerTransform;
+    public float speed;
+    public float radius;
     public float flashTime;
+    public Transform EnemyTransform;
     // Start is called before the first frame update
     public void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         original = sr.color;
+        playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -25,6 +30,34 @@ public class Enemy : MonoBehaviour
             ElementGenerate();
             Destroy(gameObject);
         }
+        enemyMove();
+    }
+    private void enemyMove() {
+        if (playerTransform != null)
+        {
+            float distance = (transform.position - playerTransform.position).sqrMagnitude;
+            float a = (transform.position.x - playerTransform.position.x);
+            Vector3 vec = transform.localScale;
+            if (a > 0) {
+                if (vec.x > 0) {
+                    vec.x = vec.x * -1;
+                }
+                transform.localScale = vec;
+            }
+            else
+            {
+                if (vec.x < 0)
+                {
+                    vec.x = vec.x * -1;
+                }
+                transform.localScale = vec;
+            }
+            if (distance < radius)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, speed * Time.deltaTime);
+            }
+        }
+
     }
     private void FlashColor(float time)
     {
@@ -35,7 +68,13 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.GetComponent<Player>().CharacterDamage(Deamge, 0);
+            if (collision.GetComponent<Player>() != null) {
+                collision.GetComponent<Player>().CharacterDamage(Deamge, 0);
+                Vector3 dis = EnemyTransform.position - collision.transform.position;
+                EnemyTransform.transform.position = new Vector3(EnemyTransform.transform.position.x + dis.x,
+                                                 EnemyTransform.transform.position.y + dis.y, -1);
+                StartCoroutine(Frozen());
+            }
         }
     }
     public void ResetColor()
@@ -53,6 +92,14 @@ public class Enemy : MonoBehaviour
                 child.gameObject.transform.localScale = x;
             }
         }
+    }
+
+    IEnumerator Frozen()
+    {
+        float currentSpeed = speed;
+        speed = 0;
+        yield return new WaitForSeconds(0.5f);
+        speed = currentSpeed;
     }
     public void CharacterDamage(float damage, float duration)
     {

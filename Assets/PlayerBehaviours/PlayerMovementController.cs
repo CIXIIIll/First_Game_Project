@@ -31,6 +31,11 @@ public class PlayerMovementController : MonoBehaviour
             animator.Play("Idle");
         }
     }
+    public void movePos(float x, float y) { 
+        vector.x = x;
+        vector.y = y;
+        rb2d.position += vector;
+    }
     private void MovePlayer()
     {
         vector.x = Input.GetAxisRaw("Horizontal");

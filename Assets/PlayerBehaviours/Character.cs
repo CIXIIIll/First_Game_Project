@@ -10,6 +10,10 @@ public class Character : MonoBehaviour
     public float MP;
     public PlayerOffset offset;
     private Player player;
+    private void Start()
+    {
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+    }
     virtual public void CharacterDie() {
        animator = GameObject.FindWithTag("Player").GetComponent<Animator>();
        animator.applyRootMotion = false;
@@ -20,7 +24,6 @@ public class Character : MonoBehaviour
         MP -= value;
     }
     public void SelfHealth(float value, float duration) {
-        player = GameObject.FindWithTag("Player").GetComponent<Player>();
         HP += value;
         if (HP >= player.HP) { 
             HP = player.HP;
