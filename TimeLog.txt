@@ -15,4 +15,5 @@
 11/15 2 hours finished AirL 6/8, and Extra damage system 6/8
 11/25 4 hours finished basic Enemy AI and add more things for Enemy battle system
 11/26 3 hours finished bat Skill
-11/17 2 hours finish giant Skill
+11/27 2 hours finish giant Skill
+11/28 6 hours 80% of map system
