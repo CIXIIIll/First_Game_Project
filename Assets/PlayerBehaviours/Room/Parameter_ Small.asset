@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1cf4c836a11da4429632b3692e32be1, type: 3}
   m_Name: Parameter_ Small
   m_EditorClassIdentifier: 
-  iterations: 50
-  Length: 50
+  iterations: 20
+  Length: 20
   startRandomly: 1
