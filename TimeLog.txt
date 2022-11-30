@@ -18,3 +18,4 @@
 11/27 2 hours finish giant Skill
 11/28 6 hours 80% of map system
 11/28 2 hours finish map system(99%)
+11/29 2 hours finish enemy create points
