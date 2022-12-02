@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Parameter_ Small
   m_EditorClassIdentifier: 
   iterations: 20
-  Length: 20
+  Length: 50
   startRandomly: 1

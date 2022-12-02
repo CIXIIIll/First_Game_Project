@@ -25,8 +25,8 @@ public class Character : MonoBehaviour
     }
     public void SelfHealth(float value, float duration) {
         HP += value;
-        if (HP >= player.HP) { 
-            HP = player.HP;
+        if (HP >= player.MaxHP) { 
+            HP = player.MaxHP;
         }
     }
     private IEnumerator HealthOverTime(float damage, float duration)

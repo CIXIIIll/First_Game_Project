@@ -17,12 +17,14 @@ public class EnemyGiant : Enemy
         base.Deamge = 30.0f;
         base.speed = 0.5f;
         base.radius = 50;
-        base.Start();
+        base.value = 5;
         attackDistance = 50;
+        base.rb2d = GetComponent<Rigidbody2D>();
         coldDown = 15;
         coldDownTime = 15;
         animator = GetComponent<Animator>();
         base.EnemyTransform = GetComponent<Transform>();
+        base.Start();
     }
 
     // Update is called once per frame

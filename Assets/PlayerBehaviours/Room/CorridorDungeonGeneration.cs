@@ -11,8 +11,6 @@ public class CorridorDungeonGeneration : MapGenerator
     [SerializeField]
     [Range(0.1f, 1)]
     private float roomPercent = 0.8f;
-    public GameObject test;
-    List<GameObject> lest = new List<GameObject>();
     protected override void RunPorceduralGeneration()
     {
         CorridorFirstGeneration();
@@ -67,16 +65,10 @@ public class CorridorDungeonGeneration : MapGenerator
         HashSet<Vector2Int> roomPositions = new HashSet<Vector2Int>();
         int roomToCreateCount = Mathf.RoundToInt(potentialRoomPositions.Count * roomPercent);
         List<Vector2Int> roomsToCreate = potentialRoomPositions.OrderBy(x => Guid.NewGuid()).Take(roomToCreateCount).ToList();
-        foreach (GameObject ob in lest) {
-            if (ob != null) {
-                DestroyImmediate(ob);
-            }
-        }
+        GameObject.FindGameObjectWithTag("EnemyGenerator").GetComponent<EnemyGenerator>().Clear();
         foreach (var roomPosition in roomsToCreate)
         {
-            Vector3 x = new Vector3(roomPosition.x, roomPosition.y, -1f);
-            GameObject point = Instantiate(test, x, new Quaternion());
-            lest.Add(point);
+            GameObject.FindGameObjectWithTag("EnemyGenerator").GetComponent<EnemyGenerator>().GeneratorPoints(roomPosition);
             var roomFloor = RunRandomWalk(randomParameter, roomPosition);
             roomPositions.UnionWith(roomFloor);
         }

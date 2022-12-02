@@ -29,6 +29,7 @@ public class PlyaerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        invokeTime += Time.deltaTime;
         Attack();
         Skill();
         Timer();
@@ -55,7 +56,6 @@ public class PlyaerAttack : MonoBehaviour
     }
     void Attack()
     {
-        invokeTime += Time.deltaTime;
         if (Input.GetButtonDown("Attack"))
         { 
             if (invokeTime - player.AttackSpeed > float.Epsilon) {
@@ -167,10 +167,6 @@ public class PlyaerAttack : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy")) {
             collision.GetComponent<Enemy>().CharacterDamage(player.GetDeamge(), 0);
-            Vector3 dis = collision.transform.position - transform.position;
-            collision.transform.position = new Vector3(collision.transform.position.x + dis.x*0.5f,
-                                             collision.transform.position.y + dis.y*0.5f, -1);
-            collision.GetComponent<Enemy>().CharacterDamage(player.GetDeamge(),0);
         }
     }
     IEnumerator DisAbleAttackBox() { 

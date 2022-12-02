@@ -18,7 +18,7 @@ public class ElementController : MonoBehaviour
     }
     public void ElementGenerate(Transform Tragettransform,int ElementID) {
         Vector3 x = Tragettransform.transform.position;
-        x.z = -0.5f;
+        x.z = -1f;
         Tragettransform.transform.position = x;
         switch (ElementID) { 
             case 0:

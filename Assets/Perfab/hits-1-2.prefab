@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6333621698851208734}
   - component: {fileID: 1433568634786161912}
+  - component: {fileID: 1213570181}
   m_Layer: 0
   m_Name: hits-1-2
   m_TagString: Untagged
@@ -84,3 +85,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1213570181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5567144384586104879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e073b1dfc60194d8f35b5ab6cf2895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Giant: {fileID: 7694216817899683047, guid: 0986f7872e4afe844b0cbc30195a006f, type: 3}
+  Bat: {fileID: 374023283778514076, guid: f9cd005b43b2da540bcc58125c881c03, type: 3}
+  CreateTime: 10
+  totalValue: 30

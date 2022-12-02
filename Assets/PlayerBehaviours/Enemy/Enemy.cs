@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     public float radius;
     public float flashTime;
     public Transform EnemyTransform;
+    public int value;
+    public Rigidbody2D rb2d;
     // Start is called before the first frame update
     public void Start()
     {
@@ -36,7 +38,7 @@ public class Enemy : MonoBehaviour
         if (playerTransform != null)
         {
             float distance = (transform.position - playerTransform.position).sqrMagnitude;
-            float a = (transform.position.x - playerTransform.position.x);
+            float a = (transform.position.x - playerTransform.position.x); 
             Vector3 vec = transform.localScale;
             if (a > 0) {
                 if (vec.x > 0) {
@@ -54,7 +56,8 @@ public class Enemy : MonoBehaviour
             }
             if (distance < radius)
             {
-                transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, speed * Time.deltaTime);
+                Vector2 temp = Vector2.MoveTowards(transform.position, playerTransform.position, speed * Time.deltaTime);
+                rb2d.MovePosition(temp);
             }
         }
 

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 938708144522429677}
   - component: {fileID: 3731661683005696236}
   m_Layer: 0
-  m_Name: FX003_01
+  m_Name: Water_Elenment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,7 +118,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.059973076, y: -0.72155607}

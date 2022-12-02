@@ -15,11 +15,13 @@ public class EnemyBat : Enemy
         base.HP = 50f;
         base.MAXHP = 50f;
         base.Deamge = 10.0f;
-        base.speed = 2;
+        base.speed = 5;
         base.radius = 30;
         coldDown = 10f;
+        base.rb2d = GetComponent<Rigidbody2D>();
         coldDownTime = 10f;
         base.EnemyTransform = GetComponent<Transform>();
+        base.value = 1;
         base.Start();
     }
 
@@ -57,7 +59,7 @@ public class EnemyBat : Enemy
     {
         base.speed = base.speed+ (base.speed*0.3f);
         yield return new WaitForSeconds(3f);
-        base.speed = 2f;
+        base.speed = 5f;
     }
     IEnumerator playIdle() {
         yield return new WaitForSeconds(0.5f);

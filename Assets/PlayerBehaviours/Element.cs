@@ -20,8 +20,10 @@ public class Element : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-           collision.gameObject.GetComponent<Player>().ReceiveElement(elementType);
-           Destroy(gameObject);
+            if (collision.gameObject.GetComponent<Player>() != null) {
+                collision.gameObject.GetComponent<Player>().ReceiveElement(elementType);
+                Destroy(gameObject);
+            }
         }
     }
 }
