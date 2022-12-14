@@ -91,6 +91,7 @@ public class SKillBehaviorController : MonoBehaviour
         CurrentSkill = player.GetCurrentSkill();
         if (Input.GetButtonDown("Skill")) {
             if (player.MP >= CurrentSkill.MPcost) {
+                player.ReduceMP(CurrentSkill.MPcost);
                 if (player.CloseRange) {
                     switch (CurrentSkill.SkillType) {
                         //Fire

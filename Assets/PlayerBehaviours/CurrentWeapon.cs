@@ -11,6 +11,7 @@ public class CurrentWeapon : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         Weapon_Data weaponData = Resources.Load<Weapon_Data>("Weapon/WeaponData/Sword");
+        weaponData.Weapon_prefab.GetComponent<Weapon_System>().hand = true;
         weaponTrans = Instantiate(weaponData.Weapon_prefab);
         player.SetWeapon(weaponData);
         weaponTrans.transform.parent = transform;
@@ -28,6 +29,7 @@ public class CurrentWeapon : MonoBehaviour
             Destroy(weaponTrans);
         }
         weaponTrans = Instantiate(weapon.Weapon_prefab);
+        weaponTrans.GetComponent<Weapon_System>().hand = true;
         weaponTrans.transform.parent = transform;
         weaponTrans.transform.position = transform.position;
         weaponTrans.transform.rotation = transform.rotation;
@@ -37,10 +39,16 @@ public class CurrentWeapon : MonoBehaviour
         if (collision.gameObject.CompareTag("Item"))
         {
             Weapon_Data weapon = collision.GetComponent<Weapon_System>().WeaponInfo();
-            Instantiate(weaponTrans, transform.position, new Quaternion());
-            UpdateWeapon(weapon);
-            player.SetWeapon(weapon);
-            collision.GetComponent<Weapon_System>().DesotryWeapon();
+            if (weapon != null) {
+                if (weaponTrans != null)
+                {
+                    weaponTrans.GetComponent<Weapon_System>().hand = false;
+                    Instantiate(weaponTrans, transform.position, new Quaternion());
+                }
+                UpdateWeapon(weapon);
+                player.SetWeapon(weapon);
+                collision.GetComponent<Weapon_System>().DesotryWeapon();
+            }
         }
     }
     public void DisableWeapon() {

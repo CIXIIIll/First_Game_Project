@@ -21613,22 +21613,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8023605804306815418, guid: b89b483b6bae44441a9285397a5758ef, type: 3}
-      propertyPath: HP
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 8023605804306815418, guid: b89b483b6bae44441a9285397a5758ef, type: 3}
-      propertyPath: MP
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 8023605804306815418, guid: b89b483b6bae44441a9285397a5758ef, type: 3}
-      propertyPath: MaxHP
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 8023605804306815418, guid: b89b483b6bae44441a9285397a5758ef, type: 3}
-      propertyPath: MaxMP
-      value: 1000
-      objectReference: {fileID: 0}
     - target: {fileID: 8024577884315674601, guid: b89b483b6bae44441a9285397a5758ef, type: 3}
       propertyPath: m_Name
       value: sword_man
@@ -27331,7 +27315,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076691864}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1

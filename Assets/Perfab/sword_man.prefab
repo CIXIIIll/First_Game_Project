@@ -366,7 +366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8024315443074712411}
   m_LocalRotation: {x: -0, y: -0, z: 0.34527174, w: 0.9385027}
-  m_LocalPosition: {x: -0.1310005, y: -0.06852795, z: 0}
+  m_LocalPosition: {x: -0.1310005, y: -0.06852795, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -585,10 +585,14 @@ MonoBehaviour:
   Frozen: 0
   currentLevel: 0
   NextExp: 0
+  TotalPoints: 0
+  DestoryPoints: 0
   CurrEXP: 0
   CannotDamage: 0
   Extra: 0
   Elements: 0
+  stopPoints: 0
+  currentPoints: 0
   CurrentSkill: {fileID: 0}
 --- !u!50 &8023605804306815419
 Rigidbody2D:

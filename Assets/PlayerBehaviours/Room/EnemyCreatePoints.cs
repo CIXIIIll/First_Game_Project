@@ -59,7 +59,7 @@ public class EnemyCreatePoints : MonoBehaviour
            {
                 if (collision.GetComponent<Player>().currentPoints >= 30) {
                     collision.GetComponent<Player>().currentPoints = 0;
-                    collision.GetComponent<Player>().TotalPoints -=1;
+                    collision.GetComponent<Player>().DestoryPoints += 1;
                     Destroy(gameObject);
                 }
            }

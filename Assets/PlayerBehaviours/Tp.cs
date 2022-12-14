@@ -6,10 +6,14 @@ public class Tp : MonoBehaviour
 {
     BoxCollider2D box;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         box = GetComponent<BoxCollider2D>();
         box.enabled = false;
+    }
+    void Start()
+    {
+
     }
 
     // Update is called once per frame

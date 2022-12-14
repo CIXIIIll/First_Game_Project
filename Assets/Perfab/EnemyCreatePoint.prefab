@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Long: {fileID: 1680628565349787426, guid: 3cb48ea3586d4e84b887b3f465a7f2b9, type: 3}
   Bat: {fileID: 374023283778514076, guid: f9cd005b43b2da540bcc58125c881c03, type: 3}
-  CreateTime: 10
+  CreateTime: 5
   totalValue: 10
 --- !u!61 &6196063510933269020
 BoxCollider2D:

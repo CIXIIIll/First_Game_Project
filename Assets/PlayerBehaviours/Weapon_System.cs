@@ -7,6 +7,7 @@ public class Weapon_System : MonoBehaviour
     public Weapon_Data weapon;
     public float DestoryTime;
     private BoxCollider2D box;
+    public bool hand;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,9 @@ public class Weapon_System : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DestoryTime+=Time.deltaTime;
+        if (!hand) {
+            DestoryTime += Time.deltaTime;
+        }
         if (DestoryTime > 1) {
             box.enabled = true;
         }

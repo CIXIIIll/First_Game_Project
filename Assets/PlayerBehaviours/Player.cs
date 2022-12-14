@@ -24,6 +24,7 @@ public class Player : Character
     public int currentLevel;
     public int NextExp;
     public int TotalPoints;
+    public int DestoryPoints;
     public int CurrEXP;
     public bool CannotDamage;
     private Weapon_Data CurrentWeapon;
@@ -39,6 +40,7 @@ public class Player : Character
     {
         skills = Resources.Load<Skill_List>("Weapon/SkillData/Skill_List");
         PlayerOffset = new PlayerOffset();
+        DestoryPoints = 0;
         CloseRange = true;
         Elements = 0;
         Earth = 0;
@@ -120,7 +122,7 @@ public class Player : Character
         BossRoom();
     }
     private void BossRoom() {
-        if (TotalPoints == 0) {
+        if (DestoryPoints == TotalPoints&&(TotalPoints>=1)) {
             GameObject.FindGameObjectWithTag("Tp").GetComponent<Tp>().EnableTp();
         }
     }

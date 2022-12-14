@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b235aba3840e506429165c2d83271566, type: 3}
   m_Name: FireLong
   m_EditorClassIdentifier: 
-  SkillType: Fire
+  SkillType: 0
   CloseWeapon: 0
   Damage: 15
-  CD: 0
-  MPcost: 0
+  MPcost: 30
   Skill_prefab: {fileID: 6021495283344678914, guid: b26f76c4020bb3840844f58a1c00a692, type: 3}
   DamageTime: 0

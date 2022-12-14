@@ -15,6 +15,6 @@ MonoBehaviour:
   SkillType: 1
   CloseWeapon: 1
   Damage: 150
-  MPcost: 0
+  MPcost: 30
   Skill_prefab: {fileID: 7095288559804817789, guid: b2d5947ec070eb2448e670af51b9203d, type: 3}
   DamageTime: 0
