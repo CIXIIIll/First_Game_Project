@@ -14,6 +14,9 @@ public class AirL : MonoBehaviour
     private Player player;
     void Start()
     {
+        Vector3 temp = transform.position;
+        temp.z = -1;
+        transform.position = temp;
         center = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         StartTime = 0;
@@ -36,9 +39,12 @@ public class AirL : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            player.SetExtra(1);
-            collision.GetComponent<Enemy>().CharacterDamage(player.GetDeamge() * player.Extra, 0);
-            Destroy(gameObject);
+            if (collision.GetComponent<Enemy>() != null)
+            {
+                player.SetExtra(1);
+                collision.GetComponent<Enemy>().CharacterDamage(player.GetDeamgeSkill(50) * player.Extra, 0);
+                Destroy(gameObject);
+            }
         }
     }
 }

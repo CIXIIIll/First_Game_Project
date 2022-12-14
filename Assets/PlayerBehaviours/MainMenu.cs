@@ -6,7 +6,18 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour 
 {
     public void OnClick() {
-        Debug.Log("Clicked");
         SceneManager.LoadScene("Level1");
+    }
+    public void QuitGame()
+     {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+     }
+    public void Back()
+    {
+        SceneManager.LoadScene("StartPage");
     }
 }

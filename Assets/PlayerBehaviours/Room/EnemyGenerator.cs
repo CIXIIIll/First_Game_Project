@@ -19,6 +19,7 @@ public class EnemyGenerator : MonoBehaviour
         
     }
     public void GeneratorPoints(Vector2Int Positions) {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().TotalPoints += 1;
         Vector3 x = new Vector3(Positions.x, Positions.y, -1f);
         GameObject point = Instantiate(Points, x, new Quaternion());
         EnemyGeneratorPoints.Add(point);

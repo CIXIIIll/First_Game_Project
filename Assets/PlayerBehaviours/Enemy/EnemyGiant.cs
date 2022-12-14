@@ -12,10 +12,15 @@ public class EnemyGiant : Enemy
     // Start is called before the first frame update
     private new void Start()
     {
-        base.HP = 500.0f;
-        base.MAXHP = 500f;
+        base.HP = 1500.0f;
+        base.MAXHP = 1500f;
         base.Deamge = 30.0f;
+        base.LevelDeamge = 10;
+        base.LevelHp = 100;
+        base.Close = true;
+        base.Boss = true;
         base.speed = 0.5f;
+        base.Rspeed = 0.5f;
         base.radius = 50;
         base.value = 5;
         attackDistance = 50;
@@ -25,6 +30,7 @@ public class EnemyGiant : Enemy
         animator = GetComponent<Animator>();
         base.EnemyTransform = GetComponent<Transform>();
         base.Start();
+        StartCoroutine(enemyAttack());
     }
 
     // Update is called once per frame
@@ -37,12 +43,21 @@ public class EnemyGiant : Enemy
             enemySkill();
         }
     }
+    IEnumerator enemyAttack() {
+        playAttackAAnim();
+        Transform attack = transform.GetChild(1);
+        attack.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.8f);
+        attack.gameObject.SetActive(false);
+        yield return new WaitForSeconds(3f);
+        StartCoroutine(enemyAttack());
+    }
     void enemySkill() {
         Transform playerTransform = playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         if (playerTransform != null)
         {
             float distance = (transform.position - playerTransform.position).sqrMagnitude;
-            if (distance <= attackDistance)
+            if (distance <= attackDistance&& !forzen)
             {
                 playAttackAnim();
                 Instantiate(skill, playerTransform.position, playerTransform.rotation);
@@ -55,6 +70,14 @@ public class EnemyGiant : Enemy
         if (animator != null)
         {
             animator.Play("Earth_Golem_AttackB");
+        }
+        StartCoroutine(playIdle());
+    }
+    void playAttackAAnim()
+    {
+        if (animator != null)
+        {
+            animator.Play("Earth_Golem_AttackA");
         }
         StartCoroutine(playIdle());
     }

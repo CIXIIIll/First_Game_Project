@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Skill_List
   m_EditorClassIdentifier: 
   List:
-  - {fileID: 11400000, guid: cbc14731ee79f6243a525d8f33b91708, type: 2}
-  - {fileID: 11400000, guid: f60b544af9f3d2e45bd8e87789d9721e, type: 2}
-  - {fileID: 11400000, guid: bc7f9d2d4078e5047b32eef428f2ce17, type: 2}
   - {fileID: 11400000, guid: 07e887750df98ba42a22ab80c01b30e9, type: 2}
+  - {fileID: 11400000, guid: bc7f9d2d4078e5047b32eef428f2ce17, type: 2}
   - {fileID: 11400000, guid: 411dbba55d1809644a8d38eedc324686, type: 2}
+  - {fileID: 11400000, guid: cbc14731ee79f6243a525d8f33b91708, type: 2}
+  - {fileID: 11400000, guid: 5a938fc235e03b84fabd562585fc0824, type: 2}
   - {fileID: 11400000, guid: d84459f1fb78991458438adb09ffc7dd, type: 2}
+  - {fileID: 11400000, guid: 479240a2adf5e46469b922d974597ac1, type: 2}
+  - {fileID: 11400000, guid: f60b544af9f3d2e45bd8e87789d9721e, type: 2}

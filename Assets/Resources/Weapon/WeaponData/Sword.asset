@@ -17,5 +17,5 @@ MonoBehaviour:
   CloseWeapon: 1
   WeaponInfo: it is a basic Sword. "Poor Guys"
   Damage: 1
-  AttackSpeed: 0.3
+  AttackSpeed: 1.5
   Weapon_prefab: {fileID: 2924581934982808070, guid: ca500326a805e6d4b886d38a612e828e, type: 3}

@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5b4f7b14be62a64e8725a18b2772ce8, type: 3}
-  m_Name: Hand
+  m_Script: {fileID: 11500000, guid: b235aba3840e506429165c2d83271566, type: 3}
+  m_Name: WaterClose
   m_EditorClassIdentifier: 
-  weapon_sprite: {fileID: 0}
-  WeaponName: Hand
+  SkillType: 3
   CloseWeapon: 1
-  WeaponInfo: Only hand
-  Damage: 1
-  AttackSpeed: 0.5
-  Weapon_prefab: {fileID: 1350343516141428487, guid: fe153e272002faa48b3f7f80c7e3165a, type: 3}
+  Damage: 0
+  MPcost: 0
+  Skill_prefab: {fileID: 1053063443247704728, guid: 91876e6685a3bf2448f3c73183eb28fc, type: 3}
+  DamageTime: 0

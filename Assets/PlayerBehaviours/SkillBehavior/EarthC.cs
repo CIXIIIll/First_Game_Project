@@ -50,13 +50,17 @@ public class EarthC : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (currentTimes <= totalTimes)
+            if (collision.GetComponent<Enemy>() != null)
             {
-                collision.GetComponent<Enemy>().CharacterDamage(player.GetDeamge()* player.Extra, 0);
-                currentTimes++;
-            }
-            else {
-                collision.GetComponent<Enemy>().CharacterDamage(player.GetDeamge(), 0);
+                if (currentTimes <= totalTimes)
+                {
+                    collision.GetComponent<Enemy>().CharacterDamage(player.GetDeamgeSkill(150) * player.Extra, 0);
+                    currentTimes++;
+                }
+                else
+                {
+                    collision.GetComponent<Enemy>().CharacterDamage(player.GetDeamgeSkill(150), 0);
+                }
             }
         }
     }

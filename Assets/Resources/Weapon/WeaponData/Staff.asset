@@ -17,5 +17,5 @@ MonoBehaviour:
   CloseWeapon: 0
   WeaponInfo: it is a basic Staff. "Poor Guys"
   Damage: 0.8
-  AttackSpeed: 0.2
+  AttackSpeed: 1
   Weapon_prefab: {fileID: 597614750450204421, guid: 07ec3e6fcdaa1a84dbd3730450415e42, type: 3}

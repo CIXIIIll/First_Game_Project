@@ -27,7 +27,7 @@ public class GiantSkill : MonoBehaviour
                 Vector3 dis =  collision.transform.position-transform.position ;
                 collision.transform.position = new Vector3(collision.transform.position.x + dis.x,
                                                  collision.transform.position.y + dis.y, -1);
-                collision.GetComponent<Player>().CharacterDamage(80, 0);
+                collision.GetComponent<Player>().CharacterDamage(50, 0);
                 box.enabled = false;
             }
         }

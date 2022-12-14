@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b235aba3840e506429165c2d83271566, type: 3}
   m_Name: EarthClose
   m_EditorClassIdentifier: 
-  SkillType: Earth
+  SkillType: 1
   CloseWeapon: 1
-  Damage: 50
-  CD: 0
+  Damage: 150
   MPcost: 0
   Skill_prefab: {fileID: 7095288559804817789, guid: b2d5947ec070eb2448e670af51b9203d, type: 3}
   DamageTime: 0

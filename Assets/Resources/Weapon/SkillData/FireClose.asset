@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b235aba3840e506429165c2d83271566, type: 3}
   m_Name: FireClose
   m_EditorClassIdentifier: 
-  SkillType: Fire
+  SkillType: 0
   CloseWeapon: 1
-  Damage: 20
-  CD: 0
+  Damage: 40
   MPcost: 10
   Skill_prefab: {fileID: 1025746736077127850, guid: 6c2fc0c9ced04f149890d29a564192ed, type: 3}
   DamageTime: 0

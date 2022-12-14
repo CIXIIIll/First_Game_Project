@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -9,30 +10,60 @@ public class Enemy : MonoBehaviour
     public float HP;
     public float MAXHP;
     public float Deamge;
+    private float BaseDeamge;
+    public bool Close;
+    public bool Boss;
+    private float BaseHp;
     public Transform playerTransform;
     public float speed;
+    public float Rspeed;
     public float radius;
     public float flashTime;
+    public float LevelHp;
+    public float LevelDeamge;
     public Transform EnemyTransform;
     public int value;
     public Rigidbody2D rb2d;
+    public bool forzen;
+    private WorldLevelSystem WLevel;
     // Start is called before the first frame update
     public void Start()
     {
+        BaseHp = HP;
+        BaseDeamge = Deamge;
+        forzen = false;
         sr = GetComponent<SpriteRenderer>();
         original = sr.color;
+        WLevel = GameObject.FindGameObjectWithTag("Level").GetComponent<WorldLevelSystem>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
-
+    private void End() {
+        SceneManager.LoadScene("GameOver");
+    }
     // Update is called once per frame
     public void Update()
     {
-        if (HP <= float.Epsilon)
+        MAXHP = BaseHp + (LevelHp*WLevel.World_Level);
+        Deamge = BaseDeamge + (LevelDeamge * WLevel.World_Level);
+        if (HP <= 0)
         {
-            ElementGenerate();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().currentPoints += value;
             Destroy(gameObject);
+            if (Boss)
+            {
+                End();
+            }
+            else {
+                GameObject.FindGameObjectWithTag("Element").GetComponent<ItemController>().GenerateItme(transform);
+            }
         }
-        enemyMove();
+        if (!forzen) {
+            enemyMove();
+        }
+    }
+    public void ResetSpeed()
+    {
+        speed = Rspeed;
     }
     private void enemyMove() {
         if (playerTransform != null)
@@ -56,8 +87,21 @@ public class Enemy : MonoBehaviour
             }
             if (distance < radius)
             {
-                Vector2 temp = Vector2.MoveTowards(transform.position, playerTransform.position, speed * Time.deltaTime);
-                rb2d.MovePosition(temp);
+                if (Close)
+                {
+                    Vector2 temp = Vector2.MoveTowards(transform.position, playerTransform.position, speed * Time.deltaTime);
+                    rb2d.MovePosition(temp);
+                }
+                else {
+                    if (a > 0)
+                    {
+                        transform.position += new Vector3(1, 0, 0) * speed * Time.deltaTime;
+                    }
+                    else {
+                        transform.position += new Vector3(-1, 0, 0) * speed * Time.deltaTime;
+                    }
+                }
+
             }
         }
 
@@ -73,10 +117,12 @@ public class Enemy : MonoBehaviour
         {
             if (collision.GetComponent<Player>() != null) {
                 collision.GetComponent<Player>().CharacterDamage(Deamge, 0);
-                Vector3 dis = EnemyTransform.position - collision.transform.position;
-                EnemyTransform.transform.position = new Vector3(EnemyTransform.transform.position.x + dis.x,
-                                                 EnemyTransform.transform.position.y + dis.y, -1);
-                StartCoroutine(Frozen());
+                if (!Boss) {
+                    Vector3 dis = EnemyTransform.position - collision.transform.position;
+                    EnemyTransform.transform.position = new Vector3(EnemyTransform.transform.position.x + dis.x,
+                                                     EnemyTransform.transform.position.y + dis.y, -1);
+                    StartCoroutine(Frozen());
+                }
             }
         }
     }
@@ -125,18 +171,6 @@ public class Enemy : MonoBehaviour
             FlashColor(flashTime);
             setHealthBar();
             HP -= damage;
-        }
-    }
-    public void ElementGenerate()
-    {
-        int i = Random.Range(1,8);
-        for (int j = 0; j < i; j++)
-        {
-            int x = Random.Range(0, 4);
-            if (x == 4) {
-                x = 3;
-            }
-            GameObject.FindGameObjectWithTag("Element").GetComponent<ElementController>().ElementGenerate(transform, x);
         }
     }
 }

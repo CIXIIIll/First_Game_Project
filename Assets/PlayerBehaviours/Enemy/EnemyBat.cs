@@ -16,7 +16,12 @@ public class EnemyBat : Enemy
         base.MAXHP = 50f;
         base.Deamge = 10.0f;
         base.speed = 5;
+        base.Rspeed = 5;
+        base.Boss = false;
         base.radius = 30;
+        base.LevelDeamge = 5;
+        base.LevelHp = 15;
+        base.Close = true;
         coldDown = 10f;
         base.rb2d = GetComponent<Rigidbody2D>();
         coldDownTime = 10f;
@@ -59,7 +64,7 @@ public class EnemyBat : Enemy
     {
         base.speed = base.speed+ (base.speed*0.3f);
         yield return new WaitForSeconds(3f);
-        base.speed = 5f;
+        ResetSpeed();
     }
     IEnumerator playIdle() {
         yield return new WaitForSeconds(0.5f);

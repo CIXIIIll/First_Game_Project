@@ -37,6 +37,7 @@ public class CurrentWeapon : MonoBehaviour
         if (collision.gameObject.CompareTag("Item"))
         {
             Weapon_Data weapon = collision.GetComponent<Weapon_System>().WeaponInfo();
+            Instantiate(weaponTrans, transform.position, new Quaternion());
             UpdateWeapon(weapon);
             player.SetWeapon(weapon);
             collision.GetComponent<Weapon_System>().DesotryWeapon();

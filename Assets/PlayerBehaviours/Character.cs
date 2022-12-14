@@ -2,23 +2,45 @@ using Assets.PlayerBehaviours;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Character : MonoBehaviour
 {
     private Animator animator;
     public float HP;
     public float MP;
-    public PlayerOffset offset;
+    public PlayerOffset PlayerOffset;
     private Player player;
     private void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
     virtual public void CharacterDie() {
-       animator = GameObject.FindWithTag("Player").GetComponent<Animator>();
-       animator.applyRootMotion = false;
-       animator.SetBool("isDie", true);
 
+        SceneManager.LoadScene("GameOver");
+
+    }
+    protected void SetOffset(int type, float value)
+    {
+        PlayerOffset = new PlayerOffset();
+        PlayerOffset.defensiveoffset = 1;
+        PlayerOffset.deamgeoffset = 1;
+        PlayerOffset.speedoffset = 1;
+        PlayerOffset.LifeSteal = 0;
+        switch (type) { 
+            case 0:
+                PlayerOffset.defensiveoffset = value;
+                break;
+            case 1:
+                PlayerOffset.defensiveoffset = value;
+                break;
+            case 2:
+                PlayerOffset.speedoffset = value;
+                break;
+            case 3:
+                PlayerOffset.LifeSteal = value;
+                break;
+        }
     }
     public void ReduceMP(float value) { 
         MP -= value;
@@ -49,7 +71,7 @@ public class Character : MonoBehaviour
                 }
                 else
                 {
-                    HP -= damage / offset.defensiveoffset;
+                    HP -= damage / PlayerOffset.defensiveoffset;
                     if (HP <= float.Epsilon)
                     {
                         CharacterDie();

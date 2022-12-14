@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b235aba3840e506429165c2d83271566, type: 3}
   m_Name: AirL
   m_EditorClassIdentifier: 
-  SkillType: Air
+  SkillType: 2
   CloseWeapon: 0
   Damage: 30
-  CD: 0
   MPcost: 0
   Skill_prefab: {fileID: 2604814064528736245, guid: e27a6e9efba9afb44949a6ea14b8cf1e, type: 3}
   DamageTime: 0

@@ -43,18 +43,21 @@ public class FireL : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (skill.DamageTime != 0)
+            if (collision.GetComponent<Enemy>() != null)
             {
-                float skillDamage = player.GetDeamgeSkill(skill.Damage);
-                collision.GetComponent<Enemy>().CharacterDamage(skillDamage, skill.DamageTime);
+                if (skill.DamageTime != 0)
+                {
+                    float skillDamage = player.GetDeamgeSkill(skill.Damage);
+                    collision.GetComponent<Enemy>().CharacterDamage(skillDamage, skill.DamageTime);
+                }
+                else
+                {
+                    float skillDamage = player.GetDeamgeSkill(skill.Damage);
+                    collision.GetComponent<Enemy>().CharacterDamage(skillDamage, 0);
+                }
+                Instantiate(Next, transform.position, transform.rotation);
+                Destroy(gameObject);
             }
-            else
-            {
-                float skillDamage = player.GetDeamgeSkill(skill.Damage);
-                collision.GetComponent<Enemy>().CharacterDamage(skillDamage, 0);
-            }
-            Instantiate(Next, transform.position, transform.rotation);
-            Destroy(gameObject);
         }
     }
 

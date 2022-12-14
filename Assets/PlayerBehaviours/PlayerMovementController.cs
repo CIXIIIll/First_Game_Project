@@ -69,8 +69,8 @@ public class PlayerMovementController : MonoBehaviour
                     }
                     vector.Normalize();
                 }
-
-                rb2d.position += vector * MoveSpeed * Time.deltaTime;
+                float tempSpeed = MoveSpeed * player.PlayerOffset.speedoffset;
+                rb2d.position += vector * Time.deltaTime * tempSpeed;
             }
         }
         //transform.position += new Vector3(vector.x, vector.y, 0.0f) * MoveSpeed * Time.deltaTime;

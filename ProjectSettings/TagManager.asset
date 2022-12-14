@@ -11,6 +11,8 @@ TagManager:
   - Element
   - Map
   - EnemyGenerator
+  - Level
+  - Tp
   layers:
   - Default
   - TransparentFX

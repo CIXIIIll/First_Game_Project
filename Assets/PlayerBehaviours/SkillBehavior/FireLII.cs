@@ -49,7 +49,10 @@ public class FireLII : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.GetComponent<Enemy>().CharacterDamage(player.GetDeamge(), 0);
+            if (collision.GetComponent<Enemy>() != null)
+            {
+                collision.GetComponent<Enemy>().CharacterDamage(player.GetDeamgeSkill(50), 0);
+            }
         }
     }
 }

@@ -1,5 +1,76 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &729711092
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 729711093}
+  - component: {fileID: 729711094}
+  - component: {fileID: 1178369500}
+  m_Layer: 0
+  m_Name: SkillBehaviorContorller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &729711093
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729711092}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.412, y: -0.399, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8022995517017304647}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &729711094
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729711092}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.3776157, y: 0.25312695}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3, y: 0.4937461}
+  m_EdgeRadius: 0
+--- !u!114 &1178369500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729711092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e67702bec6a9a43b12d7bf14d41ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1291407574
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +255,7 @@ MonoBehaviour:
   time: 0.3
   hit: {fileID: 509649703681783903, guid: 82208675d4a6a9747a82b2243e1f6816, type: 3}
   SkillCP: {fileID: 0}
+  invokeTime: 0
 --- !u!1 &8023605804462402424
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,6 +509,7 @@ GameObject:
   - component: {fileID: 8023605804306815419}
   - component: {fileID: 8023605804306815423}
   - component: {fileID: 8023605804306815422}
+  - component: {fileID: 957844306}
   m_Layer: 0
   m_Name: sword_man
   m_TagString: Player
@@ -462,6 +535,7 @@ Transform:
   - {fileID: 8023605804462402436}
   - {fileID: 8023605802901751220}
   - {fileID: 1291407575}
+  - {fileID: 729711093}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -499,18 +573,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 100
   MP: 100
+  Earth: 0
+  Fire: 0
+  Air: 0
+  Water: 0
   MaxHP: 100
   MaxMP: 100
   CloseRange: 0
-  AttackSpeed: 0.3
+  AttackSpeed: 3
   faceright: 0
   Frozen: 0
   currentLevel: 0
   NextExp: 0
   CurrEXP: 0
   CannotDamage: 0
-  CurrentSkill: {fileID: 0}
   Extra: 0
+  Elements: 0
+  CurrentSkill: {fileID: 0}
 --- !u!50 &8023605804306815419
 Rigidbody2D:
   serializedVersion: 4
@@ -572,6 +651,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 3
   rb2d: {fileID: 8023605804306815419}
+--- !u!61 &957844306
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8024577884315674601}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.000000059604645, y: 0.10665405}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.460456, y: 0.7866919}
+  m_EdgeRadius: 0
 --- !u!1 &8024638670755897661
 GameObject:
   m_ObjectHideFlags: 0

@@ -40,6 +40,7 @@ public class LongRangeAttack : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.GetComponent<Enemy>().CharacterDamage(player.GetDeamge(), 0);
+            player.SelfHealth(player.GetDeamge() * player.PlayerOffset.LifeSteal, 0);
             Destroy(gameObject);
         }
     }

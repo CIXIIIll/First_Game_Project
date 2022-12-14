@@ -5,10 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Skill/NewSkill", fileName = "NewSkill")]
 public class Skill_Data : ScriptableObject
 {
-    public string SkillType;
+    public int SkillType;
     public bool CloseWeapon;
     public float Damage;
-    public float CD;
     public float MPcost;
     public GameObject Skill_prefab;
     public float DamageTime;

@@ -57,7 +57,9 @@ public class FireC : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.GetComponent<Enemy>().CharacterDamage(player.GetDeamge(), 0);
+            if (collision.GetComponent<Enemy>() != null) {
+                collision.GetComponent<Enemy>().CharacterDamage(player.GetDeamgeSkill(100), 0);
+            }
         }
     }
     public void StopSkill() {

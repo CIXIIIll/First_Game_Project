@@ -47,28 +47,13 @@ public class EarthL : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.GetComponent<Enemy>().CharacterDamage(player.GetDeamge(), 0);
-            //»÷ÍË
-            Vector3 dis = collision.transform.position - transform.position;
-            if (dis.x > 0)
+            if (collision.GetComponent<Enemy>() != null)
             {
-                dis.x = (dis.x * 2);
+                collision.GetComponent<Enemy>().CharacterDamage(player.GetDeamgeSkill(150), 0);
             }
-            else {
-                dis.x = (dis.x * 2);
-            }
-            if (dis.y > 0)
-            {
-                dis.y = (dis.y * 2);
-            }
-            else { 
-                dis.y = (dis.y * 2);
-            }
-            collision.transform.position = new Vector3(collision.transform.position.x + dis.x,
-                                                        collision.transform.position.y + dis.y, -1);               
-
         }
     }
 }
