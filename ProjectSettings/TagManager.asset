@@ -13,6 +13,9 @@ TagManager:
   - EnemyGenerator
   - Level
   - Tp
+  - GameUI
+  - PlayerBehavior
+  - Wall
   layers:
   - Default
   - TransparentFX

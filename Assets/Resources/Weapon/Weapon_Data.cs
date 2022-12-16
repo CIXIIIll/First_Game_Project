@@ -6,11 +6,11 @@ using UnityEngine;
 //All Weapons Data Template
 public class Weapon_Data : ScriptableObject
 {
+    public int index;
     public Sprite weapon_sprite;
     public string WeaponName;
     public bool CloseWeapon;
     public string WeaponInfo;
     public float Damage;
     public float AttackSpeed;
-    public GameObject Weapon_prefab;
 }

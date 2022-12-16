@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b4f7b14be62a64e8725a18b2772ce8, type: 3}
   m_Name: Staff 1
   m_EditorClassIdentifier: 
+  index: 2
   weapon_sprite: {fileID: 21300000, guid: 84394ff6332cc7e41afc85cfd33b6091, type: 3}
   WeaponName: Staff
   CloseWeapon: 0
   WeaponInfo: it is a Better Staff
   Damage: 1
   AttackSpeed: 0.5
-  Weapon_prefab: {fileID: 6361515677482915824, guid: 745716a336d3951489a50335062a44e2, type: 3}
