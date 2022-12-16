@@ -6,6 +6,9 @@ public class EnemyLong : Enemy
 {
     public float coldDown;
     public float coldDownTime;
+    /// <summary>
+    /// Enemy bullet object
+    /// </summary>
     public GameObject Hit;
     public float attackRaius;
     // Start is called before the first frame update
