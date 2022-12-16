@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WaterC : MonoBehaviour
 {
-    private Player player;
     private float Angle;
     public Skill_Data Skill_Data;
     private float StartTime;

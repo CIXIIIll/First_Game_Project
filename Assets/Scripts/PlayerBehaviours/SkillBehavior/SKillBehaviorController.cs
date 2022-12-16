@@ -155,6 +155,7 @@ public class SKillBehaviorController : MonoBehaviour
                 ///Stop the Fire close Skill
                 player.transform.GetChild(0).GetComponent<FireC>().StopSkill();
             }
+            /// if have enough Mp
             else if(player.MP >= CurrentSkill.MPcost) {
                 player.ReduceMP(CurrentSkill.MPcost);
                 if (player.CloseRange) {

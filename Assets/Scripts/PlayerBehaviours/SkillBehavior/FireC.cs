@@ -15,7 +15,7 @@ public class FireC : MonoBehaviour
         box = GetComponent<PolygonCollider2D>();
         player = GameObject.FindGameObjectWithTag("PlayerBehavior").GetComponent<Player>();
         StartCoroutine(stratSkill());
-        StartCoroutine(reduceMPOverTime());
+        StartCoroutine(reduceMpOverTime());
         Skill_Data temp = player.GetCurrentSkill();
         MPCost = temp.MPcost;
     }
@@ -25,7 +25,11 @@ public class FireC : MonoBehaviour
     {
   
     }
-    IEnumerator reduceMPOverTime() {
+    /// <summary>
+    /// Reduce the MP by the time
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator reduceMpOverTime() {
         if (MPCost > player.MP)
         {
             StopSkill();
@@ -39,15 +43,22 @@ public class FireC : MonoBehaviour
     }
     void endReduceMPOverTime()
     {
-        StartCoroutine(reduceMPOverTime());
+        StartCoroutine(reduceMpOverTime());
     }
-
+    /// <summary>
+    /// Enable the hit box as loop
+    /// </summary>
+    /// <returns></returns>
     IEnumerator stratSkill()
     {
         yield return new WaitForSeconds(StartTime);
         box.enabled = true;
         StartCoroutine(DisAbleAttackBox());
     }
+    /// <summary>
+    /// reset the hit box as loop
+    /// </summary>
+    /// <returns></returns>
     IEnumerator DisAbleAttackBox()
     {
         yield return new WaitForSeconds(EndTime);
@@ -63,6 +74,9 @@ public class FireC : MonoBehaviour
             }
         }
     }
+    /// <summary>
+    /// Stop the skill either with out enough Mp or input skill key again
+    /// </summary>
     public void StopSkill() {
         player.Frozen = false;
         Destroy(gameObject);

@@ -37,14 +37,10 @@ public class EarthC : MonoBehaviour
         float Distance = (transform.position - vector).sqrMagnitude;
         if (Distance > DestoryDistance)
         {
-            StartCoroutine(EndofSkill());
+            Destroy(gameObject);
         }
     }
-    IEnumerator EndofSkill()
-    {
-        yield return new WaitForSeconds(0.5f);
-        Destroy(gameObject);
-    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))

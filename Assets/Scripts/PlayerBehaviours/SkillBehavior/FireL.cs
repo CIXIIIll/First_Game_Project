@@ -44,6 +44,7 @@ public class FireL : MonoBehaviour
             if (collision.GetComponent<Enemy>() != null)
             {
                 collision.GetComponent<Enemy>().CharacterDamage(Skill_Data.Damage, 0);
+                //Generate next skill
                 Instantiate(Next, transform.position, transform.rotation);
                 Destroy(gameObject);
             }

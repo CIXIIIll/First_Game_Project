@@ -37,6 +37,9 @@ public class WorldLevelSystem : MonoBehaviour
         CurrentTime += Time.deltaTime;
         UpdateLevel();
     }
+    /// <summary>
+    /// Update Level
+    /// </summary>
     private void UpdateLevel() {
         if (CurrentTime - UpdateTime > 30f) {
             World_Level++;

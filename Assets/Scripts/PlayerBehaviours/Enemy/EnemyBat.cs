@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class EnemyBat : Enemy
 {
-    public float attackDistance = 5f;
+    /// <summary>
+    /// The Distance to use skill
+    /// </summary>
+    public float SkillDistance = 5f;
     private Animator animator;
     public float coldDown;
     public float coldDownTime;
@@ -47,7 +50,7 @@ public class EnemyBat : Enemy
         if (playerTransform != null)
         {
             float distance = (transform.position - playerTransform.position).sqrMagnitude;
-            if (distance <= attackDistance)
+            if (distance <= SkillDistance)
             {
                 playAttackAnim();
                 StartCoroutine(batSkill());

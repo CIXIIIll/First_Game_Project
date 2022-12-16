@@ -125,7 +125,7 @@ public class Enemy : MonoBehaviour
         WLevel = GameObject.FindGameObjectWithTag("Level").GetComponent<WorldLevelSystem>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
-
+    // Update is called once per frame
     protected void Update()
     {
         moveTimer += Time.deltaTime;

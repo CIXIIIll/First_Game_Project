@@ -26,12 +26,20 @@ public class EarthL : MonoBehaviour
     {
         
     }
+    /// <summary>
+    /// enable the hit box to fit with Animation
+    /// </summary>
+    /// <returns></returns>
     IEnumerator stratSkill()
     {
         yield return new WaitForSeconds(StartTime);
         box.enabled = true;
         StartCoroutine(DisAbleAttackBox());
     }
+    /// <summary>
+    /// disable the hit box to fit with Animation
+    /// </summary>
+    /// <returns></returns>
     IEnumerator DisAbleAttackBox()
     {
         yield return new WaitForSeconds(EndTime);
@@ -39,6 +47,10 @@ public class EarthL : MonoBehaviour
         animator.Play("EarthLE");
         StartCoroutine(EndofSkill());
     }
+    /// <summary>
+    /// End the Skill to fit with Animation
+    /// </summary>
+    /// <returns></returns>
     IEnumerator EndofSkill()
     {
         yield return new WaitForSeconds(0.5f);
